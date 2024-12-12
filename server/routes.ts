@@ -69,7 +69,7 @@ export function registerRoutes(app: Express) {
     try {
       const campaign = {
         name: req.body.name,
-        archetype: req.body.archetype,
+        target_profile: req.body.archetype,
         headline: req.body.headline,
         description: req.body.description,
         cta: req.body.cta,

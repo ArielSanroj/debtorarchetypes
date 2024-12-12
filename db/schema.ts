@@ -28,12 +28,12 @@ export const borrowers = pgTable("borrowers", {
 export const campaigns = pgTable("campaigns", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  archetype: text("archetype").$type<BorrowerProfile>().notNull(),
+  target_profile: text("target_profile").$type<BorrowerProfile>().notNull(),
   headline: text("headline").notNull(),
   description: text("description").notNull(),
   cta: text("cta").notNull(),
   content: text("content").array().notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
+  created_at: timestamp("created_at").defaultNow(),
 });
 
 export const campaignResults = pgTable("campaign_results", {
