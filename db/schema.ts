@@ -28,7 +28,7 @@ export const borrowers = pgTable("borrowers", {
 export const campaigns = pgTable("campaigns", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  target_profile: text("target_profile").$type<BorrowerProfile>().notNull(),
+  archetype: text("archetype").$type<BorrowerProfile>().notNull(),
   headline: text("headline").notNull(),
   description: text("description").notNull(),
   cta: text("cta").notNull(),

@@ -67,13 +67,15 @@ export function registerRoutes(app: Express) {
 
   app.post("/api/campaigns", async (req, res) => {
     try {
+      const { name, archetype, headline, description, cta, content } = req.body;
+      
       const campaign = {
-        name: req.body.name,
-        target_profile: req.body.archetype,
-        headline: req.body.headline,
-        description: req.body.description,
-        cta: req.body.cta,
-        content: req.body.content,
+        name,
+        archetype: archetype.toLowerCase(),
+        headline,
+        description,
+        cta,
+        content,
       };
 
       const [newCampaign] = await db.insert(campaigns).values(campaign).returning();
