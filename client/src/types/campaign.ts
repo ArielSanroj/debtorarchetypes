@@ -28,49 +28,53 @@ export type CampaignTemplate = {
 export const CAMPAIGN_TEMPLATES: CampaignTemplate[] = [
   {
     archetype: "Autonomous",
-    headline: "Engineered for Financial Success",
-    description: "Take control of your financial future with our tailored lending solutions",
-    cta: "Explore Options",
+    headline: "Data-Driven Financial Recovery Plan",
+    description: "Take control with our transparent, goal-oriented recovery solutions backed by analytics",
+    cta: "View Your Plan",
     content: [
-      "Highlight ROI and financial benefits",
-      "Focus on growth opportunities",
-      "Showcase success metrics"
+      "Access your personalized financial dashboard",
+      "Track progress with real-time metrics",
+      "Flexible self-service repayment tools",
+      "Educational resources for financial growth"
     ],
     minScore: 30
   },
   {
     archetype: "Impulsive",
-    headline: "Limited Time Lending Opportunities",
-    description: "Don't miss out on exclusive rates and special offers",
-    cta: "Act Now",
+    headline: "Quick Action, Immediate Benefits",
+    description: "Unlock exclusive benefits today with our rapid recovery program",
+    cta: "Claim Now",
     content: [
-      "Emphasize time-sensitive offers",
-      "Showcase exclusive benefits",
-      "Feature testimonials from satisfied customers"
+      "Limited-time repayment incentives",
+      "Interactive payment calculator",
+      "Instant approval on payment plans",
+      "Exclusive rewards for quick action"
     ],
     minScore: 30
   },
   {
     archetype: "Avoidant",
-    headline: "Stress-Free Lending Solutions",
-    description: "Simple, transparent, and hassle-free loan options",
-    cta: "Learn More",
+    headline: "Stress-Free Path to Financial Freedom",
+    description: "Simple, positive steps towards resolving your loan - no pressure, no complexity",
+    cta: "Start Easy",
     content: [
-      "Highlight easy application process",
-      "Emphasize customer support",
-      "Focus on simplicity and transparency"
+      "Simple step-by-step guidance",
+      "Flexible, small-payment options",
+      "Positive progress celebrations",
+      "Supportive, no-pressure assistance"
     ],
     minScore: 30
   },
   {
     archetype: "Isolative",
-    headline: "Personal Space for Financial Planning",
-    description: "Take your time to explore options at your own pace",
-    cta: "Browse Privately",
+    headline: "Private & Secure Financial Recovery",
+    description: "Resolve your loan privately with our secure, confidential recovery platform",
+    cta: "Access Privately",
     content: [
-      "Emphasize self-service options",
-      "Focus on privacy and security",
-      "Provide detailed online resources"
+      "100% private online portal",
+      "Secure self-service options",
+      "Anonymous financial consultation",
+      "Confidential payment arrangements"
     ],
     minScore: 30
   }

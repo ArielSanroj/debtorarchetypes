@@ -1,0 +1,60 @@
+Category/Aspect	Autonomous (Loan Recovery)	Isolated (Loan Recovery)	Avoidant (Loan Recovery)	Impulsive (Marketing)
+Key Characteristics	"- Analytical, independent, goal-oriented
+- Value control, efficiency, transparency
+- Thorough in decision-making"	"- Value privacy, introspection
+- Prefer minimal direct interaction
+- Trustworthy once confidence is built"	"- Optimistic, creative, harmony-seeking
+- Prefer simplicity, avoid complexity
+- Motivated by positive emotions"	"- Energetic, reactive, seek immediate gratification
+- Quick decision-makers
+- Adaptable, enthusiastic about new offerings"
+Common Challenges	"- Overanalysis delays decisions
+- Reluctance to seek help
+- Perfectionist tendencies"	"- Reluctance to engage
+- Difficulty trusting new methods
+- Resistance to change"	"- Procrastination and avoidance
+- Dislike of complexity
+- Focus on short-term rewards"	"- Impulsivity leading to regret
+- Low frustration tolerance
+- Difficulty committing long-term"
+Recommended Strategies	"- Provide transparent, data-driven plans
+- Offer self-service tools, flexible terms
+- Emphasize incremental progress"	"- Ensure privacy and security
+- Offer anonymous, self-service tools
+- Highlight trust, provide reflective content"	"- Keep solutions simple, visually clear
+- Offer immediate incentives & positive reinforcement
+- Encourage small steps"	"- Use urgent, dynamic campaigns
+- Offer immediate rewards and flexible return policies
+- Provide supportive follow-up"
+Communication Style	"- Transparent, factual, data-focused
+- Non-intrusive but clear and direct"	"- Discreet, secure, and confidential
+- Reflective, emphasizing long-term growth"	"- Positive, encouraging, stress-free
+- Simple language, visual aids
+- Non-judgmental and empathetic"	"- Energetic, emotionally appealing
+- Urgent calls-to-action, excitement
+- Brief reflective prompts to reduce regret"
+Tools & Activities	"- Financial calculators, dashboards
+- Educational guides
+- Flexible repayment schedules"	"- Secure online portals
+- Anonymous webinars
+- Private consultations and closed forums"	"- Flash promotions, step-up repayment plans
+- Wellness-oriented financial sessions
+- Community support forums"	"- Flash sales, time-limited offers
+- Gamified challenges, instant coupons
+- Interactive events, influencer collaborations"
+Incentives & Rewards	"- Reduced penalties for early/consistent payments
+- Highlight credit score benefits"	"- Emphasize trust, personal growth outcomes
+- Incentives tied to financial independence"	"- Immediate fee waivers for quick action
+- Loyalty perks for consistency
+- Incremental goal celebrations"	"- Instant gratification via discounts
+- Reward programs with quick milestones
+- Flexible returns to minimize buyer’s remorse"
+Outcome/Goal	"- Timely repayment
+- Maintained long-term relationship
+- Improved credit health"	"- Trust-based, long-term engagement
+- Steady, self-managed repayment
+- Loyalty and retention"	"- Prompt resolution of overdue accounts
+- Positive, stress-free client experience
+- Stronger relationship"	"- Rapid purchase decisions
+- Sustained engagement through novelty and rewards
+- Brand loyalty and advocacy"
