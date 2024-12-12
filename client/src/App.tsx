@@ -11,7 +11,11 @@ function App() {
         <Route path="/" component={DashboardPage} />
         <Route path="/profiles" component={ProfilesPage} />
         <Route path="/campaigns" component={CampaignsPage} />
-        <Route>404 Page Not Found</Route>
+        <Route>
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <h1 className="text-2xl font-bold text-muted-foreground">404 Page Not Found</h1>
+          </div>
+        </Route>
       </Switch>
     </Layout>
   );
