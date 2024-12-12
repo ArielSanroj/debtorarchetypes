@@ -16,7 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { BorrowerProfile, CampaignStatus, ChannelType } from "@db/schema";
+import { cn } from "@/lib/utils";
+import type { BorrowerProfile } from "@db/schema";
 
 interface Campaign {
   id: number;
