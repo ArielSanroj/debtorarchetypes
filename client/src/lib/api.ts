@@ -43,24 +43,44 @@ interface CampaignStats {
 export function useBorrowers() {
   return useQuery<Borrower[]>({
     queryKey: ['/api/borrowers'],
+    queryFn: async () => {
+      const res = await fetch('/api/borrowers');
+      if (!res.ok) throw new Error('Failed to fetch borrowers');
+      return res.json();
+    }
   });
 }
 
 export function useBorrowerStats() {
   return useQuery<Stats>({
     queryKey: ['/api/borrowers/stats'],
+    queryFn: async () => {
+      const res = await fetch('/api/borrowers/stats');
+      if (!res.ok) throw new Error('Failed to fetch borrower stats');
+      return res.json();
+    }
   });
 }
 
 export function useCampaigns() {
   return useQuery<Campaign[]>({
     queryKey: ['/api/campaigns'],
+    queryFn: async () => {
+      const res = await fetch('/api/campaigns');
+      if (!res.ok) throw new Error('Failed to fetch campaigns');
+      return res.json();
+    }
   });
 }
 
 export function useCampaignStats() {
   return useQuery<CampaignStats>({
     queryKey: ['/api/campaigns/stats'],
+    queryFn: async () => {
+      const res = await fetch('/api/campaigns/stats');
+      if (!res.ok) throw new Error('Failed to fetch campaign stats');
+      return res.json();
+    }
   });
 }
 

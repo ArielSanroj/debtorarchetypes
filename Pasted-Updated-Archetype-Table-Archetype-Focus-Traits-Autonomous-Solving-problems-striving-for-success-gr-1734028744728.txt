@@ -1,0 +1,115 @@
+Updated Archetype Table
+Archetype	Focus	Traits
+Autonomous	Solving problems, striving for success, growth, and mastery	Achievement-driven, ambitious
+Impulsive	Creativity, excitement, emotional connection, and exclusivity	Trendy, emotionally expressive
+Avoidant	Comfort, relaxation, and escapism	Calm, stress-free, hassle-free
+Isolative	Introspection, solitude, self-care, and personal space	Thoughtful, peaceful, individualistic
+Campaign Strategies for Isolative
+Isolative Campaign Goals:
+Goal: Promote personal introspection, creativity, and serenity.
+Content Ideas:
+Focus on products or services that enable self-reflection, mindfulness, or a personal touch.
+Emphasize privacy, independence, and self-expression.
+Add CTAs like:
+"Create your sanctuary."
+"Your space, your style."
+Campaign Example:
+Instagram Reels featuring serene environments (e.g., a peaceful workspace or cozy living room) with calming background music.
+Blog posts like "5 Tips to Create a Zen Space for Yourself."
+Code Implementation
+Below is the updated Python code to dynamically generate campaigns, now including Isolative:
+
+python
+Copy code
+def generate_campaigns(archetype_scores):
+    """Generate dynamic marketing campaigns based on archetype scores."""
+    campaigns = []
+
+    # Autonomous Campaign
+    if archetype_scores.get("Autonomous", 0) > 30:
+        campaigns.append({
+            "archetype": "Autonomous",
+            "headline": "Engineered for Excellence",
+            "description": "Achieve your goals with high-quality, functional designs. Tailored for those who strive for more.",
+            "cta": "Shop Now",
+            "content": [
+                "Showcase testimonials of professionals wearing the product.",
+                "Highlight product durability, performance, and quality."
+            ]
+        })
+
+    # Impulsive Campaign
+    if archetype_scores.get("Impulsive", 0) > 30:
+        campaigns.append({
+            "archetype": "Impulsive",
+            "headline": "Modern Elegance for Everyone",
+            "description": "Unleash your individuality with exclusive, bold designs. Be part of the elite few.",
+            "cta": "Explore Collection",
+            "content": [
+                "Create bold Instagram Stories featuring influencers.",
+                "Emphasize limited-time offers and exclusivity."
+            ]
+        })
+
+    # Avoidant Campaign
+    if archetype_scores.get("Avoidant", 0) > 30:
+        campaigns.append({
+            "archetype": "Avoidant",
+            "headline": "Effortless Elegance",
+            "description": "Relax and shop stress-free with our comfortable, hassle-free options.",
+            "cta": "Discover Comfort",
+            "content": [
+                "Highlight free returns and no shipping costs.",
+                "Showcase cozy settings in promotional visuals."
+            ]
+        })
+
+    # Isolative Campaign
+    if archetype_scores.get("Isolative", 0) > 30:
+        campaigns.append({
+            "archetype": "Isolative",
+            "headline": "Create Your Sanctuary",
+            "description": "Find peace and express yourself with designs tailored for introspection and serenity.",
+            "cta": "Transform Your Space",
+            "content": [
+                "Highlight products that promote mindfulness and creativity.",
+                "Feature calming environments or serene spaces in visuals.",
+                "Include blog content like 'Tips to Create a Zen Space for Yourself.'"
+            ]
+        })
+
+    return campaigns
+
+# Example Usage
+archetype_scores = {
+    "Autonomous": 40,
+    "Impulsive": 25,
+    "Avoidant": 15,
+    "Isolative": 35
+}
+
+campaigns = generate_campaigns(archetype_scores)
+
+# Output campaigns
+for campaign in campaigns:
+    print(f"Archetype: {campaign['archetype']}")
+    print(f"Headline: {campaign['headline']}")
+    print(f"Description: {campaign['description']}")
+    print(f"CTA: {campaign['cta']}")
+    print(f"Content Ideas: {', '.join(campaign['content'])}\n")
+Example Output
+For the given archetype scores (Autonomous: 40%, Impulsive: 25%, Avoidant: 15%, Isolative: 35%), the output might look like:
+
+vbnet
+Copy code
+Archetype: Autonomous
+Headline: Engineered for Excellence
+Description: Achieve your goals with high-quality, functional designs. Tailored for those who strive for more.
+CTA: Shop Now
+Content Ideas: Showcase testimonials of professionals wearing the product., Highlight product durability, performance, and quality.
+
+Archetype: Isolative
+Headline: Create Your Sanctuary
+Description: Find peace and express yourself with designs tailored for introspection and serenity.
+CTA: Transform Your Space
+Content Ideas: Highlight products that promote mindfulness and creativity., Feature calming

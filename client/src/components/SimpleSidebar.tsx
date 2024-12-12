@@ -56,15 +56,16 @@ export function SimpleSidebar({ children }: SimpleSidebarProps) {
       </div>
 
       {/* Main content */}
-      <div className={cn(
+      <main className={cn(
         "transition-all duration-300",
         isOpen ? 'lg:ml-64' : 'lg:ml-16',
         "ml-0"
       )}>
-        <div className="p-4">
-          <slot />
+        <div className="container p-4">
+          {/* Only render children once */}
+          {isMobileOpen ? null : children}
         </div>
-      </div>
+      </main>
     </div>
   );
 }
