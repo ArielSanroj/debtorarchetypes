@@ -53,11 +53,22 @@ export default function CampaignsPage() {
           <ProfileAnalysisDashboard scores={archetypeScores} />
 
           {showForm && (
-            <CampaignForm 
-              archetypeScores={archetypeScores}
-              onSuccess={() => setShowForm(false)}
-              onCancel={() => setShowForm(false)}
-            />
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {Object.entries(archetypeScores).map(([archetype, score]) => (
+                  <DebtCampaignCreator
+                    key={archetype}
+                    selectedArchetype={archetype as ArchetypeCategory}
+                    score={score}
+                  />
+                ))}
+              </div>
+              <CampaignForm 
+                archetypeScores={archetypeScores}
+                onSuccess={() => setShowForm(false)}
+                onCancel={() => setShowForm(false)}
+              />
+            </>
           )}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
