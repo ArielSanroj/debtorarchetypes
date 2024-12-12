@@ -8,6 +8,8 @@ import { History, PlusIcon } from "lucide-react";
 import { ARCHETYPE_PROFILES } from "@/types/archetypes";
 import { useCampaigns } from "@/lib/api";
 import type { ArchetypeScore } from "@/types/campaign";
+import { DebtCampaignCreator } from "@/components/campaigns/DebtCampaignCreator";
+import type { ArchetypeCategory } from "@/types/archetypes";
 
 export default function CampaignsPage() {
   const [showForm, setShowForm] = useState(false);
