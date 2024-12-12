@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ProfileDistribution } from "@/components/dashboard/ProfileDistribution";
+import { ProfileAnalysisDashboard } from "@/components/dashboard/ProfileAnalysisDashboard";
+import { EngagementStrategy } from "@/components/engagement/EngagementStrategy";
 import { CampaignForm } from "@/components/campaigns/CampaignForm";
 import { PlusIcon } from "lucide-react";
+import { ARCHETYPE_PROFILES } from "@/types/archetypes";
 import type { ArchetypeScore } from "@/types/campaign";
 
 export default function CampaignsPage() {
@@ -26,15 +28,24 @@ export default function CampaignsPage() {
         </Button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <ProfileDistribution scores={archetypeScores} />
-        {showForm && (
-          <CampaignForm 
-            archetypeScores={archetypeScores}
-            onSuccess={() => setShowForm(false)}
-            onCancel={() => setShowForm(false)}
+      <ProfileAnalysisDashboard scores={archetypeScores} />
+
+      {showForm && (
+        <CampaignForm 
+          archetypeScores={archetypeScores}
+          onSuccess={() => setShowForm(false)}
+          onCancel={() => setShowForm(false)}
+        />
+      )}
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {Object.values(ARCHETYPE_PROFILES).map(profile => (
+          <EngagementStrategy
+            key={profile.category}
+            profile={profile}
+            score={archetypeScores[profile.category]}
           />
-        )}
+        ))}
       </div>
     </div>
   );
