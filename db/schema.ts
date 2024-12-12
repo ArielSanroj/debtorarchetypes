@@ -5,6 +5,13 @@ export type BorrowerProfile = 'autonomous' | 'isolated' | 'avoidant' | 'impulsiv
 export type CampaignStatus = 'draft' | 'active' | 'completed' | 'cancelled';
 export type ChannelType = 'email' | 'sms' | 'phone' | 'app';
 
+// Zod schemas for validation
+import { z } from 'zod';
+
+export const borrowerProfileEnum = z.enum(['autonomous', 'isolated', 'avoidant', 'impulsive']);
+export const campaignStatusEnum = z.enum(['draft', 'active', 'completed', 'cancelled']);
+export const channelTypeEnum = z.enum(['email', 'sms', 'phone', 'app']);
+
 export const borrowers = pgTable("borrowers", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -21,13 +28,11 @@ export const borrowers = pgTable("borrowers", {
 export const campaigns = pgTable("campaigns", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  description: text("description"),
-  targetProfile: text("target_profile").$type<BorrowerProfile>().notNull(),
-  status: text("status").$type<CampaignStatus>().notNull().default('draft'),
-  channels: json("channels").$type<ChannelType[]>().notNull(),
-  startDate: timestamp("start_date"),
-  endDate: timestamp("end_date"),
-  metadata: json("metadata").$type<Record<string, any>>(),
+  archetype: text("archetype").$type<BorrowerProfile>().notNull(),
+  headline: text("headline").notNull(),
+  description: text("description").notNull(),
+  cta: text("cta").notNull(),
+  content: text("content").array().notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

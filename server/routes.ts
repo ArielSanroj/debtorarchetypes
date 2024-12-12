@@ -19,20 +19,38 @@ export function registerRoutes(app: Express) {
 
   app.get("/api/borrowers/stats", async (_req, res) => {
     try {
-      const stats = await db.select({
+      // Get basic stats
+      const [basicStats] = await db.select({
         totalBorrowers: sql<number>`count(*)`,
-        totalOverdue: sql<number>`sum(loan_amount)`,
-        avgRiskScore: sql<number>`avg(risk_score)`,
-        profileDistribution: sql<Record<string, number>>`
-          json_object_agg(
-            profile,
-            count(*)
-          )
-        `
+        totalOverdue: sql<number>`COALESCE(sum(loan_amount), 0)`,
+        avgRiskScore: sql<number>`COALESCE(avg(risk_score), 0)`,
       }).from(borrowers);
 
-      res.json(stats[0]);
+      // Get profile distribution separately
+      const profileCounts = await db.select({
+        profile: borrowers.profile,
+        count: sql<number>`count(*)`
+      })
+      .from(borrowers)
+      .groupBy(borrowers.profile);
+
+      const profileDistribution = Object.fromEntries(
+        profileCounts.map(({ profile, count }) => [profile, count])
+      );
+
+      const stats = {
+        ...basicStats,
+        profileDistribution,
+      };
+
+      res.json(stats[0] || {
+        totalBorrowers: 0,
+        totalOverdue: 0,
+        avgRiskScore: 0,
+        profileDistribution: {}
+      });
     } catch (error) {
+      console.error('Failed to fetch borrower stats:', error);
       res.status(500).json({ error: "Failed to fetch borrower stats" });
     }
   });
@@ -49,27 +67,49 @@ export function registerRoutes(app: Express) {
 
   app.post("/api/campaigns", async (req, res) => {
     try {
-      const [campaign] = await db.insert(campaigns).values(req.body).returning();
-      res.json(campaign);
+      const campaign = {
+        name: req.body.name,
+        archetype: req.body.archetype,
+        headline: req.body.headline,
+        description: req.body.description,
+        cta: req.body.cta,
+        content: req.body.content,
+      };
+
+      const [newCampaign] = await db.insert(campaigns).values(campaign).returning();
+      res.json(newCampaign);
     } catch (error) {
+      console.error('Failed to create campaign:', error);
       res.status(500).json({ error: "Failed to create campaign" });
     }
   });
 
   app.get("/api/campaigns/stats", async (_req, res) => {
     try {
-      const stats = await db.select({
-        totalCampaigns: sql<number>`count(*)`,
-        activeCampaigns: sql<number>`count(*) filter (where status = 'active')`,
-        completedCampaigns: sql<number>`count(*) filter (where status = 'completed')`,
-        totalRecovered: sql<number>`sum(cr.recovered)`,
-        totalEngaged: sql<number>`count(*) filter (where cr.engaged = true)`
-      })
-      .from(campaigns)
-      .leftJoin(campaignResults, sql`true`);
+      // First get total campaigns count
+      const [campaignCount] = await db.select({
+        count: sql<number>`count(*)`
+      }).from(campaigns);
 
-      res.json(stats[0]);
+      // Then get recovery and engagement stats
+      const [results] = await db.select({
+        totalRecovered: sql<number>`COALESCE(sum(recovered), 0)`,
+        totalEngaged: sql<number>`count(*) filter (where engaged = true)`
+      }).from(campaignResults);
+
+      const stats = {
+        totalCampaigns: campaignCount?.count || 0,
+        totalRecovered: results?.totalRecovered || 0,
+        totalEngaged: results?.totalEngaged || 0,
+      };
+
+      res.json(stats[0] || {
+        totalCampaigns: 0,
+        totalRecovered: 0,
+        totalEngaged: 0
+      });
     } catch (error) {
+      console.error('Failed to fetch campaign stats:', error);
       res.status(500).json({ error: "Failed to fetch campaign stats" });
     }
   });

@@ -1,35 +1,47 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pie } from "recharts";
-
-interface ProfileDistributionProps {
-  data: Record<string, number>;
-}
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
+import type { ArchetypeScore } from '@/types/campaign';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-export function ProfileDistribution({ data }: ProfileDistributionProps) {
-  const chartData = Object.entries(data).map(([name, value]) => ({
+interface ProfileDistributionProps {
+  scores: ArchetypeScore;
+}
+
+export function ProfileDistribution({ scores }: ProfileDistributionProps) {
+  const data = Object.entries(scores).map(([name, value]) => ({
     name,
-    value,
+    value: Math.round(value)
   }));
 
   return (
-    <Card className="col-span-2">
+    <Card>
       <CardHeader>
-        <CardTitle>Borrower Profile Distribution</CardTitle>
+        <CardTitle>Profile Distribution</CardTitle>
       </CardHeader>
-      <CardContent className="h-[300px]">
-        <Pie
-          data={chartData}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-          fill="#8884d8"
-          label
-          colors={COLORS}
-        />
+      <CardContent>
+        <div className="h-64">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                outerRadius={80}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
       </CardContent>
     </Card>
   );

@@ -16,13 +16,12 @@ interface Borrower {
 interface Campaign {
   id: number;
   name: string;
-  description?: string;
-  targetProfile: BorrowerProfile;
-  status: CampaignStatus;
-  channels: ChannelType[];
-  startDate?: Date;
-  endDate?: Date;
-  metadata?: Record<string, any>;
+  archetype: BorrowerProfile;
+  headline: string;
+  description: string;
+  cta: string;
+  content: string[];
+  createdAt: Date;
 }
 
 interface Stats {
